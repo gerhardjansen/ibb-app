@@ -1,0 +1,52 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:k="http://ibb-d.de/ui"
+>
+	<ul>
+		<li>
+			<c:choose>
+				<c:when test="#{not activeUser.present}">
+					<k:link path="login" />
+				</c:when>
+				<c:otherwise>
+					<k:link path="user/profile" value=""><i class="fa fa-user" /></k:link>
+					<ul>
+						<li>
+							<k:link path="user/profile" />
+						</li>
+						<c:if test="#{activeUser.can('VIEW_ADMIN_PAGES')}">
+							<li>
+								<k:link path="admin/users" />
+							</li>
+						</c:if>
+						<li>
+							<k:form id="logoutForm" fieldset="false">
+								<h:commandLink value="#{i18n['general.logout']}" action="#{logoutBacking.logout}" />
+							</k:form>
+						</li>
+					</ul>
+				</c:otherwise>
+			</c:choose>
+		</li>
+		<li>
+			<a href="#" onclick="return false">
+				<h:graphicImage styleClass="flag" library="ibb" name="flags/#{language.code}.svg" width="24" height="18" />
+			</a>
+			<k:form id="languageForm" fieldset="false">
+				<ul>
+					<c:forEach items="#{language.others}" var="otherLanguage">
+						<li>
+							<h:commandLink action="#{language.switchTo(otherLanguage)}">
+								<h:graphicImage styleClass="flag" library="ibb" name="flags/#{otherLanguage}.svg" width="24" height="18" />
+							</h:commandLink>
+						</li>
+					</c:forEach>
+				</ul>
+			</k:form>
+		</li>
+	</ul>
+</ui:composition>

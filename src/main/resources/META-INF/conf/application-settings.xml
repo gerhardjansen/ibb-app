@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>
+		Base settings for the application that are common for all stages.
+	</comment>
+
+	<!-- Application -->
+	<entry key="developmentMode">true</entry>
+
+	<!-- Mail -->
+	<entry key="fromEmail">IBB Verwaltungssoftware &lt;support@ibb-d.de&gt;</entry>
+	<entry key="supportEmail">support@ibb-d.de</entry>
+	<entry key="adminEmail">admin@ibb-d.de</entry>
+	<entry key="exceptionsEmail">exceptions@ibb-d.de</entry>
+
+	<!-- STAGING-DEFAULT - should put key here that is set to NOT send mails to recipients. -->
+	<!-- Then define separate key for live stage that DOES actually send mails. -->
+	<entry key="mandrillAPIKey">???</entry> 
+	<entry key="mandrillDefaultTemplateId">???</entry>
+</properties>
